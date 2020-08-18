@@ -16,7 +16,13 @@ def index
   end
 
   def flowers
-    response = RestClient.get("https://trefle.io/api/v1/plants/search?token=#{ENV["TREFLE_API_KEY"]}&page=#{request.headers["currentPage"]}&q=flower")
+    if request.headers["searchTerm"]
+      searchTerm = request.headers["searchTerm"]
+    else
+      searchTerm = "flower"
+    end
+
+    response = RestClient.get("https://trefle.io/api/v1/plants/search?token=#{ENV["TREFLE_API_KEY"]}&page=#{request.headers["currentPage"]}&q=#{searchTerm}")
     data = JSON.parse(response)
     render json: {
       "data": data,
