@@ -16,10 +16,9 @@ def index
   end
 
   def flowers
-    if request.headers["searchTerm"]
+    searchTerm = "flower"
+    if request.headers["searchTerm"] != "" 
       searchTerm = request.headers["searchTerm"]
-    else
-      searchTerm = "flower"
     end
 
     response = RestClient.get("https://trefle.io/api/v1/plants/search?token=#{ENV["TREFLE_API_KEY"]}&page=#{request.headers["currentPage"]}&q=#{searchTerm}")
