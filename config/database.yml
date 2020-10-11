@@ -1,7 +1,16 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: plantae_api
+  database: theplantaeapi_development
+  pool: 5
+  username:
+  password:
+  host: localhost
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: theplantaeapi_production
   pool: 5
   username:
   password:
