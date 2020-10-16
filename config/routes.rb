@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      get "/", to: "sessions#auto_login"
       get "/auto_login", to: "sessions#auto_login"
       get '/flowers', to: 'plants#flowers'
       get '/food', to: 'plants#food'
