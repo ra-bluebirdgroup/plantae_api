@@ -40,7 +40,7 @@ class Api::V1::SessionsController < ApplicationController
       response["token"] = token
      render json: response, status: :created
     else
-      render json: {errors: "User not found."}
+      render json: {errors: "User not found"}
     end
 
   end
