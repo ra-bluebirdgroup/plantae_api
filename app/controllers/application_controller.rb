@@ -1,9 +1,3 @@
-# require "google/cloud/vision"
-# vision = Google::Cloud::Vision
-# image = "https://bs.floristic.org/image/o/c6d9a5222b6ef0e3a7bdef3350278718d3097bce"
-# response = vision.image_annotator.label_detection image: image
-#
-# p response
 
 class ApplicationController < ActionController::API
   before_action :authorized
