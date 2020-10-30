@@ -19,7 +19,11 @@ skip_before_action :authorized, only: [:getImageId]
                           "synonyms"]
       }
 
-response = RestClient.post("https://api.plant.id/v2/identify", key.to_json, {content_type: :json, accept: :json})
+response = RestClient::Request.execute(method: :post,
+                            url: 'https://api.plant.id/v2/identify',
+                            payload: key,
+                            headers: {"Content-Type" => "application/json"}
+                           )
 data = JSON.parse(response)
 
 p response
