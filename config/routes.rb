@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get '/getImage', to: 'plants#getImage'
       post '/userplants', to: 'plants#userplants'
       post '/identifier', to: 'identifier#getImageId'
+      map.connect 'identifier/:getImageId', :controller => 'indentifier'
       resources :plants, :user_plant_comments, :user_plants, :users, :sessions
     end
   end
