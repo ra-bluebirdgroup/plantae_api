@@ -7,7 +7,7 @@ skip_before_action :authorized, only: [:getImageId]
 
   def getImageId
     p request.body.read
-    o "okoko"
+    p "okoko"
     key = {
         api_key: ENV['PLANTID'],
         images: params[:imagePath],
