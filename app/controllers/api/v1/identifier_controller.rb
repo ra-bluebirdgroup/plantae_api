@@ -4,7 +4,6 @@ require 'json'
 
 class Api::V1::IdentifierController < ApplicationController
 skip_before_action :authorized, only: [:getImageId]
-
   def getImageId
     p request.body.read
     p "okoko"
