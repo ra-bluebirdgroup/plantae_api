@@ -4,12 +4,12 @@ require 'json'
 
 class Api::V1::IdentifierController < ApplicationController
 skip_before_action :authorized, only: [:getImageId]
+
   def getImageId
-    p request.body.read
-    p "okoko"
+
     key = {
         api_key: ENV['PLANTID'],
-        images: params[:imagePath],
+        images: request.body,
         modifiers: ["crops_fast", "similar_images"],
         plant_language: "en",
         plant_details: ["common_names",
@@ -21,9 +21,9 @@ skip_before_action :authorized, only: [:getImageId]
       }
 
 response = RestClient.post("https://api.plant.id/v2/identify", key, {content_type: :json, accept: :json})
+p response
 data = JSON.parse(response)
 
-p
 render json: data
   end
 
