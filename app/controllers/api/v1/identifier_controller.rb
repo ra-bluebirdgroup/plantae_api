@@ -6,9 +6,7 @@ class Api::V1::IdentifierController < ApplicationController
 skip_before_action :authorized, only: [:getImageId]
 
   def getImageId
-p request.body
-p request
-p "ok"
+
     key = {
         api_key: ENV['PLANTID'],
         images: request.body,
@@ -22,7 +20,7 @@ p "ok"
                           "synonyms"]
       }
 
-response = RestClient.post("https://api.plant.id/v2/identify", key)
+response = RestClient.post("https://api.plant.id/v2/identify", key, {content_type: :json, accept: :json})
 p response
 data = JSON.parse(response)
 
