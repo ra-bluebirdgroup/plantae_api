@@ -6,7 +6,9 @@ class Api::V1::IdentifierController < ApplicationController
 skip_before_action :authorized, only: [:getImageId]
 
   def getImageId
-
+p request.body
+p request
+p "ok"
     key = {
         api_key: ENV['PLANTID'],
         images: request.body,
