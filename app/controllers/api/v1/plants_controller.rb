@@ -4,14 +4,13 @@ require 'json'
 class Api::V1::PlantsController < ApplicationController
    skip_before_action :authorized
 
-def index
-  
-  response = RestClient.get("https://trefle.io/api/v1/plants?token=#{ENV["TREFLE_API_KEY"]}&page=#{request.headers["currentPage"]}")
-  data = JSON.parse(response)
-  render json: {
-    "data": data,
-    "currentPage": request.headers["currentPage"]
-  }
+  def index
+    response = RestClient.get("https://trefle.io/api/v1/plants?token=#{ENV["TREFLE_API_KEY"]}&page=#{request.headers["currentPage"]}")
+    data = JSON.parse(response)
+    render json: {
+      "data": data,
+      "currentPage": request.headers["currentPage"]
+    }
   end
 
   def flowers
