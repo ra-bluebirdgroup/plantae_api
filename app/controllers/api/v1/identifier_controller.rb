@@ -1,4 +1,3 @@
-require "google/cloud/vision"
 require 'rest-client'
 require 'json'
 
